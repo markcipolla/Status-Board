@@ -1,0 +1,12 @@
+<ul style="clear:left">
+<% (1..10).each do |count| %>
+  <li><%= @client.user_timeline[count]['text']  %></li>
+<% end %>
+</ul>
+
+<ul>
+<% (1..10).each do |count| %>
+  <li><%= @client.mentions[count]['text']  %></li>
+<% end %>
+</ul>
+

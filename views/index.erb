@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Status Board</title>
+
+<link rel="stylesheet" href="/styles.css" type="text/css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+<script src="/jquery.flot.js" type="text/javascript" charset="utf-8"></script>
+<script src="/jquery.flot.pie.pack.js" type="text/javascript" charset="utf-8"></script>
+<script src="/scripts.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+  
+<section id="wrapper">
+  <section class="panel tworow twocolumn" id="ga_stats_browsers">
+    <h1></h1>
+    <section class="content">
+    </section>
+    <script type="text/javascript" charset="utf-8"> 
+      function showBrowserCountries() {
+        STATUS.PageStats.attach('#ga_stats_browsers', '/pagestats/countries', 'Countries');
+        setTimeout ("showBrowserOS()", 30000 );
+      }
+      
+      function showBrowserOS() {
+        STATUS.PageStats.attach('#ga_stats_browsers', '/pagestats/browsers/os', 'OS');
+        setTimeout ("showBrowserBrowsers()", 30000 );
+      }
+      
+      function showBrowserBrowsers() {
+        STATUS.PageStats.attach('#ga_stats_browsers', '/pagestats/browsers', 'Browsers');
+        setTimeout ("showBrowserChrome()", 30000 );
+      }
+      
+      function showBrowserChrome() {
+        STATUS.PageStats.attach('#ga_stats_browsers', '/pagestats/browsers/chrome', 'Google Chrome');
+        setTimeout ("showBrowserIE()", 30000 );
+      }
+      
+      function showBrowserIE() {
+        STATUS.PageStats.attach('#ga_stats_browsers', '/pagestats/browsers/ie', 'Internet Explorer');
+        setTimeout ("showBrowserFF()", 30000 );
+      }
+      
+      function showBrowserFF() {
+        STATUS.PageStats.attach('#ga_stats_browsers', '/pagestats/browsers/ff', 'Mozilla Firefox');
+        setTimeout ("showBrowserOpera()", 30000 );
+      }
+      
+      function showBrowserOpera() {
+        STATUS.PageStats.attach('#ga_stats_browsers', '/pagestats/browsers/opera', 'Opera');
+        setTimeout ("showBrowserSafari()", 30000 );
+      }
+      
+      function showBrowserSafari() {
+        STATUS.PageStats.attach('#ga_stats_browsers', '/pagestats/browsers/safari', 'Safari');
+        setTimeout ("showBrowserCountries()", 30000 );
+      }
+      
+      STATUS.PageStats.attach('#ga_stats_browsers', '/pagestats/countries', 'Countries');
+      setTimeout ("showBrowserOS()", 30000 );
+    </script>
+  </section>
+  
+  <section class="panel tworow fourcolumn" id="ga_stats_homepage_views">
+    <h1>Homepage Views</h1>
+    <section class="content">
+    <script type="text/javascript" charset="utf-8"> 
+      $.ajax({
+        url: '/pagestats/homepage',
+        dataType: 'json',
+        success: function(data) {
+          $('#ga_stats_homepage_views').addClass("loaded");
+          var collection = data;
+          var homepageDateList = new Array();
+          var homepageViewsValues = new Array();
+        
+          $.each(collection, function(index, value) { 
+            homepageDateList.push(value[0]);
+          });
+        
+          $.each(collection, function(index, value) { 
+            homepageViewsValues.push(parseInt(value[1]));
+          });
+
+          var overview = $.plot($("#ga_stats_homepage_views .content"), [collection], {
+              series: {
+                  lines: { show: false, lineWidth: .5 },
+                  shadowSize: 0
+              },
+              xaxis: { mode: "time" },
+              yaxis: { min: 0, autoscaleMargin: 0.1 },
+              selection: { mode: "x" }
+          });
+          
+      
+        }
+      });
+    </script>
+    </section>
+  </section>    
+  
+  <!-- <section class="panel onerow onecolumn" id="ga_stats_ecommerce_transactions">
+    <h1>Transactions</h1>
+    <section class="content">
+    <script type="text/javascript" charset="utf-8"> 
+      $.ajax({
+        url: '/ecommerce/transactions/yesterday',
+        dataType: 'json',
+        success: function(data) {
+          $('#ga_stats_ecommerce_transactions').addClass("loaded");
+          var collection = data;
+          var transactionsDateList = new Array();
+          var transactionsValues = new Array();
+          var transactionsRevenueValues = new Array();
+        
+          $.each(collection, function(index, value) { 
+            transactionsDateList.push(value[0]);
+          });
+        
+          $.each(collection, function(index, value) { 
+            transactionsValues.push(parseInt(value[1]));
+          });
+          
+          $.each(collection, function(index, value) { 
+            transactionsRevenueValues.push(parseInt(value[2]));
+          });
+          
+          $('#ga_stats_ecommerce_transactions h1').append(' - '+ transactionsDateList[0]);
+          $('#ga_stats_ecommerce_transactions .content').append('<h2 class="title">' + transactionsValues[0] + ' sales<br />$' + transactionsRevenueValues[0] + '</h2>');
+        }
+      });
+    </script>
+    </section>
+  </section> -->
+  
+  <section class="panel productList tworow sixcolumn" id="ga_stats_ecommerce_sales">
+    <h1></h1>
+    <section class="content">
+    </section>
+    <script type="text/javascript" charset="utf-8"> 
+      STATUS.Ecommerce_Sales.attach('#ga_stats_ecommerce_sales');
+      setInterval ("STATUS.Ecommerce_Sales.attach('#ga_stats_ecommerce_sales');", 300000 );
+    </script>
+  </section>
+  
+</section>
+</body>
+</html>

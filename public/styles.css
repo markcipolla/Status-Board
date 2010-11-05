@@ -1,0 +1,169 @@
+body {
+	font: normal 12px Arial;
+	background-color: #333;
+	padding: 0;
+	margin: 0 0 0 2px;
+}
+
+/* HTML5 tags */
+header, section, footer, aside, nav, article, figure {
+	display: block;
+}
+
+#wrapper {
+	width: 1006px;
+	height: 762px;
+	overflow: hidden;
+}
+
+.panel {
+	width: 390px;
+	height: 232px;
+	
+	float: left;
+	background: #FBFBFB url(/busy-spinner.gif) center center no-repeat;
+	
+	margin: 1px 1px 0 0;
+}
+
+.onecolumn {
+	width: 166px;
+}
+
+.twocolumn {
+	width: 333px;
+}
+
+.threecolumn {
+	width: 500px;
+}
+
+.fourcolumn {
+	width: 670px;
+}
+
+.fivecolumn {
+	width: 500px;
+}
+
+.sixcolumn {
+	width: 1004px;
+}
+
+.onerow {
+	height: 115px;
+}
+
+.tworow {
+	height: 231px;
+}
+
+.panel h1 {
+	font-size: 14px;
+	margin: 0;
+	padding: 4px 10px;
+	background-color: #E3E3E3;
+	color: #333;
+	display: block;
+	float: left;
+}
+
+.panel .content {
+	margin: 20px;
+}
+
+.onecolumn .content {
+	width: 146px;
+	margin: 10px;
+}
+
+.twocolumn .content {
+	width: 293px;
+}
+
+.threecolumn .content {
+	width: 460px;
+}
+
+.fourcolumn .content {
+	width: 630px;
+}
+
+.fivecolumn .content {
+	width: 460px;
+}
+
+.sixcolumn .content {
+	width: 964px;
+}
+
+.onerow .content {
+	height: 75px;
+	margin: 10px;
+}
+
+.onerowgraph .content {
+	height: 95px;
+}
+
+.tworow .content {
+	height: 191px;
+}
+
+.sixcolumn .content ul {
+	width: 50%;
+	float: left;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.onecolumn .content div.legend td {
+	font-size: 8px !important;
+}
+
+.onecolumn .content div.legend td.legendColorBox div div {
+	height: 5px !important;
+	width: 10px !important;
+}
+
+.panel .content div.legend table {
+	top: 0px !important;
+	right: 0px !important;
+	font-size: 9px;
+}
+
+.loaded {
+	background: #fbfbfb;
+}
+
+.onerow h2.title {
+	font-size: 35px;
+	margin: 0;
+}
+
+.productList .content {
+	clear: left;
+}
+
+.productList .product {
+  display: block;
+  float: left;
+  width: 77px;
+	margin-right: 10px;
+}
+
+.productList .product img {
+	width: 60px;
+	float: left;
+}
+
+.productList .product h2 {
+	font-size: 11px;
+	font-weight: normal;
+}
+
+.productList .product h3 {
+	font-size: 11px;
+	font-weight: bold;
+}
